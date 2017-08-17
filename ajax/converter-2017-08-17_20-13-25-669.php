@@ -132,19 +132,47 @@ $binario = '1100001001';
 
 $total = strlen($binario) - 1;
 
-$j = 0;
+for($i = $total; $i >= 0; $i--){
+	
+	$decimal .= $binario[$i];
+		
+}
+
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(2, $i) * $decimal[$i];
+	
+}
+
+//echo $decimal_final;
+
+//---------------- BINARIO PARA DECIMAL -------------//
+
+//---------------- OCTAL PARA DECIMAL -------------//
+
+unset($decimal);
+unset($decimal_final);
+
+$octal = '1411';
+
+$total = strlen($octal) - 1;
 
 for($i = $total; $i >= 0; $i--){
 	
-	$decimal += pow(2, $j) * $binario[$i];
-	
-	$j++;
-			
+	$decimal .= $octal[$i];
+		
 }
 
-echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
 
-//---------------- BINARIO PARA DECIMAL -------------//
+//echo $decimal_final;
+
+//---------------- OCTAL PARA DECIMAL -------------//
+
 
 //---------------- OCTAL PARA DECIMAL -------------//
 
@@ -165,7 +193,7 @@ for($i = $total; $i >= 0; $i--){
 		
 }
 
-//echo $decimal;
+echo $decimal;
 
 //---------------- /OCTAL PARA DECIMAL -------------//
 

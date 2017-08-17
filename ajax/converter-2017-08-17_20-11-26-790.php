@@ -132,17 +132,19 @@ $binario = '1100001001';
 
 $total = strlen($binario) - 1;
 
-$j = 0;
-
 for($i = $total; $i >= 0; $i--){
 	
-	$decimal += pow(2, $j) * $binario[$i];
-	
-	$j++;
-			
+	$decimal .= $binario[$i];
+		
 }
 
-echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(2, $i) * $decimal[$i];
+	
+}
+
+//echo $decimal_final;
 
 //---------------- BINARIO PARA DECIMAL -------------//
 
@@ -155,17 +157,51 @@ $octal = '1411';
 
 $total = strlen($octal) - 1;
 
-$j = 0;
-
 for($i = $total; $i >= 0; $i--){
 	
-	$decimal += pow(8, $j) * $octal[$i];
-	
-	$j++;
+	$decimal .= $octal[$i];
 		
 }
 
-//echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
+
+//echo $decimal_final;
+
+//---------------- OCTAL PARA DECIMAL -------------//
+
+
+//---------------- OCTAL PARA DECIMAL -------------//
+
+unset($decimal);
+unset($decimal_final);
+
+$octal = '1411';
+
+$total = strlen($octal) - 1;
+
+for($i = $total; $i >= 0; $i--){
+	
+	$decimal .= $octal[$i];
+		
+}
+
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
+
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
+
+//echo $decimal_final;
 
 //---------------- /OCTAL PARA DECIMAL -------------//
 
@@ -188,7 +224,20 @@ for($i = $total; $i >= 0; $i--){
 	
 }
 
-//echo $decimal;
+
+echo $decimal;
+
+return false;
+
+// 
+
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += $decimal[$i];
+		
+}
+
+echo $decimal_final;
 
 //---------------- HEXADECIMAL PARA DECIMAL -------------//
 

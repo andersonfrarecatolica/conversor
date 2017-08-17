@@ -24,20 +24,20 @@ function converteNumeroLetra($numero){
 
 function converteLetraNumero($letra){
 	
-	if($letra == 'A'){
-		$retorno = 10;	
-	}else if($letra == 'B'){
-		$retorno = 11;	
-	}else if($letra == 'C'){
-		$retorno = 12;	
-	}else if($letra == 'D'){
-		$retorno = 13;	
-	}else if($letra == 'E'){
-		$retorno = 14;	
-	}else if($letra == 'F'){
-		$retorno = 15;	
+	if($numero == 10){
+		$retorno = 'A';	
+	}else if($numero == 11){
+		$retorno = 'B';	
+	}else if($numero == '12'){
+		$retorno = 'C';	
+	}else if($numero == 13){
+		$retorno = 'D';	
+	}else if($numero == 14){
+		$retorno = 'E';	
+	}else if($numero == 15){
+		$retorno = 'F';	
 	}else{
-		$retorno = $letra;	
+		$retorno = $numero;	
 	}
 	
 	return $retorno;
@@ -132,17 +132,19 @@ $binario = '1100001001';
 
 $total = strlen($binario) - 1;
 
-$j = 0;
-
 for($i = $total; $i >= 0; $i--){
 	
-	$decimal += pow(2, $j) * $binario[$i];
-	
-	$j++;
-			
+	$decimal .= $binario[$i];
+		
 }
 
-echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(2, $i) * $decimal[$i];
+	
+}
+
+//echo $decimal_final;
 
 //---------------- BINARIO PARA DECIMAL -------------//
 
@@ -155,40 +157,50 @@ $octal = '1411';
 
 $total = strlen($octal) - 1;
 
-$j = 0;
-
 for($i = $total; $i >= 0; $i--){
 	
-	$decimal += pow(8, $j) * $octal[$i];
-	
-	$j++;
+	$decimal .= $octal[$i];
 		
 }
 
-//echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
 
-//---------------- /OCTAL PARA DECIMAL -------------//
+echo $decimal_final;
 
-//---------------- HEXADECIMAL PARA DECIMAL -------------//
+//---------------- OCTAL PARA DECIMAL -------------//
+
+
+//---------------- OCTAL PARA DECIMAL -------------//
 
 unset($decimal);
 unset($decimal_final);
 
-$hexadecimal = '1E240';
+$octal = '1411';
 
-$total = strlen($hexadecimal) - 1;
-
-$j = 0;
+$total = strlen($octal) - 1;
 
 for($i = $total; $i >= 0; $i--){
+	
+	$decimal .= $octal[$i];
 		
-	$decimal += pow(16, $j) * converteLetraNumero($hexadecimal[$i]);
-	
-	$j++;
-	
 }
 
-//echo $decimal;
+for($i = 0; $i <= $total; $i++){
+	
+	$decimal_final += pow(8, $i) * $decimal[$i];
+		
+}
+
+echo $decimal_final;
+
+//---------------- OCTAL PARA DECIMAL -------------//
+
+//---------------- HEXADECIMAL PARA DECIMAL -------------//
+
 
 //---------------- HEXADECIMAL PARA DECIMAL -------------//
 
