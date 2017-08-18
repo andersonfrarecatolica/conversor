@@ -8,33 +8,39 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
+<script src="js/jquery.js"></script>
 <script>
 
-function converter(tipo){
+function verifica_base(base){
 	
-	valor =  $('#valor').val();
-	base =  $('#base').val();
+	valor = $('#valor').val();
 	
-	alert(valor);
+	converter(valor);
 	
-	return false;
+}
+
+function verifica_valor(valor){
 	
-	decimal =  $('#decimal').val();
-	binario =  $('#binario').val();
-	octal =  $('#octal').val();
-	hexadecimal =  $('#hexadecimal').val();
+	converter(valor);
+		
+}
+
+function converter(valor){
 	
+	base =  $('#base').val();	
+		
 	$.ajax({
-		data:'decimal='+	decimal+'&binario='+binario+'&octal='+octal+'&hexadecimal='+hexadecimal+'&tipo='+tipo,
+		data:'base='+base+'&valor='+valor,
 		type:'POST',
+		dataType:"json",
 		url:"ajax/converter.php",
 		success: function(msg){
 			
-			$('#decimal').val();
-			$('#binario').val();
-			$('#octal').val();
-			$('#hexadecimal').val();
-				
+			$('#decimal').val(msg.decimal);
+			$('#binario').val(msg.binario);
+			$('#octal').val(msg.octal);
+			$('#hexadecimal').val(msg.hexadecimal);
+			
 		}
 	});
 
@@ -61,7 +67,7 @@ function converter(tipo){
                         
                         <div class="form-group">
                             <label for="valor">Valor</label>
-                            <input type="text" class="form-control" id="valor" placeholder="Digite o valor">
+                            <input type="text" class="form-control" id="valor" placeholder="Digite o valor" onkeyup="verifica_valor(this.value);">
                         </div>
                     
                     </div>     
@@ -70,7 +76,7 @@ function converter(tipo){
                         <div class="form-group">
                             <label for="valor">Base</label>
                             <div class="form-group">
-                                <select class="form-control" id="base">
+                                <select class="form-control" id="base" onChange="verifica_base(this.value);"> 
                                   <option value="1">Decimal</option>
                                   <option value="2">Binário</option>
                                   <option value="3">Octal</option>
