@@ -8,45 +8,6 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
-<script src="js/jquery.js"></script>
-<script>
-
-function verifica_base(base){
-	
-	valor = $('#valor').val();
-	
-	converter(valor);
-	
-}
-
-function verifica_valor(valor){
-	
-	converter(valor);
-		
-}
-
-function converter(valor){
-	
-	base =  $('#base').val();	
-		
-	$.ajax({
-		data:'base='+base+'&valor='+valor,
-		type:'POST',
-		dataType:"json",
-		url:"ajax/converter.php",
-		success: function(msg){
-			
-			$('#decimal').val(msg.decimal);
-			$('#binario').val(msg.binario);
-			$('#octal').val(msg.octal);
-			$('#hexadecimal').val(msg.hexadecimal);
-			
-		}
-	});
-
-}
-
-</script>
 
 </head>
 
@@ -137,6 +98,49 @@ function converter(valor){
     </div>
 
 </div>
+
+
+<script src="js/jquery.js"></script>
+<script>
+
+function verifica_base(){
+	
+	$('#valor').val("");
+	$('#decimal').val("");
+	$('#binario').val("");
+	$('#octal').val("");
+	$('#hexadecimal').val("");
+		
+}
+
+function verifica_valor(valor){
+	
+	converter(valor);
+		
+}
+
+function converter(valor){
+	
+	base =  $('#base').val();	
+		
+	$.ajax({
+		data:'base='+base+'&valor='+valor,
+		type:'POST',
+		dataType:"json",
+		url:"ajax/converter.php",
+		success: function(msg){
+			
+			$('#decimal').val(msg.decimal);
+			$('#binario').val(msg.binario);
+			$('#octal').val(msg.octal);
+			$('#hexadecimal').val(msg.hexadecimal);
+			
+		}
+	});
+
+}
+
+</script>
 
 </body>
 </html>
